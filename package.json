@@ -1,0 +1,20 @@
+{
+  "name": "sistema-educativo-infantil",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sistema educativo personalizable para niños de 5-8 años con modo kiosco",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "start": "vite"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "@types/node": "^20.5.0"
+  }
+}

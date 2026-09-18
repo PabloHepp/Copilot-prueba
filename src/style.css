@@ -1,0 +1,268 @@
+/* Estilos principales del sistema educativo */
+
+:root {
+  --primary-color: #FF6B6B;
+  --secondary-color: #4ECDC4;
+  --accent-color: #45B7D1;
+  --success-color: #96CEB4;
+  --warning-color: #FECA57;
+  --background-gradient: linear-gradient(135deg, #87CEEB 0%, #98FB98 100%);
+  --text-color: #2C3E50;
+  --shadow: 0 4px 15px rgba(0,0,0,0.1);
+  --border-radius: 20px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Comic Sans MS', 'Trebuchet MS', cursive, sans-serif;
+  background: var(--background-gradient);
+  color: var(--text-color);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  user-select: none;
+}
+
+/* Contenedor principal */
+#app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Barra superior */
+.top-bar {
+  height: 60px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: var(--shadow);
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.time-display {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+/* Área principal del escritorio */
+.desktop {
+  flex: 1;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+  align-content: start;
+  overflow-y: auto;
+}
+
+/* Iconos de aplicaciones */
+.app-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+  min-height: 180px;
+  justify-content: center;
+}
+
+.app-icon:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  border-color: var(--primary-color);
+}
+
+.app-icon:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.app-icon .icon {
+  width: 80px;
+  height: 80px;
+  font-size: 60px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent-color);
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.app-icon .label {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--text-color);
+  line-height: 1.2;
+}
+
+/* Colores específicos para diferentes tipos de aplicaciones */
+.app-icon.math .icon { background: var(--primary-color); }
+.app-icon.letters .icon { background: var(--secondary-color); }
+.app-icon.colors .icon { background: var(--warning-color); }
+.app-icon.shapes .icon { background: var(--success-color); }
+.app-icon.music .icon { background: #E17055; }
+.app-icon.puzzle .icon { background: #A29BFE; }
+.app-icon.admin .icon { background: #636E72; }
+
+/* Modal para aplicaciones */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .desktop {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    padding: 15px;
+  }
+  
+  .app-icon {
+    min-height: 140px;
+    padding: 15px;
+  }
+  
+  .app-icon .icon {
+    width: 60px;
+    height: 60px;
+    font-size: 40px;
+  }
+  
+  .app-icon .label {
+    font-size: 14px;
+  }
+  
+  .top-bar {
+    height: 50px;
+    padding: 0 15px;
+  }
+  
+  .logo {
+    font-size: 20px;
+  }
+  
+  .time-display {
+    font-size: 16px;
+  }
+}
+
+/* Animaciones de carga */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.app-icon {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.app-icon:nth-child(1) { animation-delay: 0.1s; }
+.app-icon:nth-child(2) { animation-delay: 0.2s; }
+.app-icon:nth-child(3) { animation-delay: 0.3s; }
+.app-icon:nth-child(4) { animation-delay: 0.4s; }
+.app-icon:nth-child(5) { animation-delay: 0.5s; }
+.app-icon:nth-child(6) { animation-delay: 0.6s; }
+
+/* Indicador de carga */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 24px;
+  color: var(--primary-color);
+}
+
+.loading::after {
+  content: '';
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--primary-color);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 15px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

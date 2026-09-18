@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Abrir Sistema Educativo",
+			"type": "shell",
+			"command": "start",
+			"args": [
+				"sistema-educativo.html"
+			],
+			"group": "build",
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}
